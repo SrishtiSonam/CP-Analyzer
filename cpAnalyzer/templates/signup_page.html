@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<form class="board_div" method="POST" action="/signup_page/">
+{% csrf_token %}
+    <h3 style="font-size:2rem ">Fill the following details: </h3>
+    <div class="sign_form">
+        <label for="username">UserName:</label>
+        <input type="text" id="username" name="username"><br><br>
+    </div>
+    <div class="sign_form">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+    </div>
+    <div class="sign_form">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+    </div>
+    <div class="sign_form">
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password"><br><br>
+    </div>
+    <div class="members_form_submit" style="padding:2rem" >
+        <button type="submit" class="board" >Submit</button>
+    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>If already have an account</p>
+        <a href="/login_page">Click here to move to move to login_form.</a>
+    {% endif %}
+
+</form>
+
+{% endblock body %}

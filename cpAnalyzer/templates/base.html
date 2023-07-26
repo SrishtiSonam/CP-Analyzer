@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{page}}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer/">
+    <link rel="icon" href="{% static '\Images\Favicon.avif' %}">
+    <script src="{% static 'script.js' %}" defer></script>
+</head>
+<body>
+
+    <div class="nav_bar1">
+        <div class="logo_icon">
+            <img id="Nav_icon" src="{% static '\Images\Favicon.avif' %}" alt="icon">
+            <img id="Nav_logo" src="{% static '\Images\Logo.png' %}" alt="logo">
+        </div>
+        <div class="search">
+            <div class="magnifing_glass logo">
+                <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i>
+            </div>
+            <div class="search_bar">
+                <input id="CP_search" type="text" placeholder="...">
+            </div>
+        </div>
+    </div>
+
+    {% block body %}{% endblock body %}
+
+    <div class="footer_1">
+        <ul class="footer_1_upper" type="None">
+            <li> About Us </li>
+            <li> Privacy Policy </li>
+            <li> Terms of Use</li>
+            <li> Contact Us </li>
+            <li> Code of Conduct </li>
+        </ul>
+        <ul class="social_icons" type="None">
+            <li id="Facebook"><i class="fa-brands fa-facebook fa-xl" style="color: #ffffff;"></i></li>
+            <li id="Twitter"><i class="fa-brands fa-twitter fa-xl" style="color: #ffffff;"></i></li>
+            <li id="Instagram"><i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i></li>
+            <li id="Youtube"><i class="fa-brands fa-youtube fa-xl" style="color: #ffffff;"></i></li>
+        </ul>
+    </div>
+
+    <div class="General_info footer_2">
+        <p class="General_info_para"> CP Analyzer is a Computer Science portal.</p>
+        <p class="Gerenal_info_disc">
+            2023 © All rights reserved | CP Digital Limited
+        </p>
+    </div>
+
+</body>
+</html>

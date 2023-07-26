@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<form class="board_div" method="POST" action="/member_form/">
+{% csrf_token %}
+
+    <h3 style="font-size:2rem ">Fill the following details: </h3>
+    <div class="members_form">
+        <label for="rollNo">Roll Number:</label>
+        <input type="text" id="rollNo" class="form_input" name="rollNo"><br><br>
+    </div>
+    <div class="members_form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" class="form_input" name="name"><br><br>
+    </div>
+    <div class="members_form">
+        <label for="email">Email ID:</label>
+        <input type="text" id="email" class="form_input" name="email"><br><br>
+    </div>
+    <div class="members_form">
+        <label for="codechef_user">Codechef Username:</label>
+        <input type="text" id="codechef_user" class="form_input" name="codechef_user"><br><br>
+    </div>
+    <div class="members_form">
+        <label for="codeforces_user">Codeforces Username:</label>
+        <input type="text" id="codeforces_user" class="form_input" name="codeforces_user"><br><br>
+    </div>
+    <div class="members_form">
+        <label for="leetcode_user">Leetcode Username:</label>
+        <input type="text" id="leetcode_user" class="form_input" name="leetcode_user"><br><br>
+    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="members_form_submit" style="padding:2rem" >
+        <button type="submit" class="board" >Submit</button>
+    </div>
+
+</form>
+
+{% endblock body %}

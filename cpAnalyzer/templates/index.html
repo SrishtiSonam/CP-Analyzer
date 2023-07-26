@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% comment %} <div id="splash-screen">
+    <div class="splash_display">
+        <div class="splash_image">
+            <img class="splash_img" src="static\Images\splash_image.png" alt="icon">
+        </div>
+    </div>
+    <div class="heat_map">
+        <img class="splash_img" src="static\Images\heat_map.png" alt="icon">
+    <div>
+</div> {% endcomment %}
+
+ <div id="main-content">
+    <div class="board_div">
+        <a href="/login_page"><button class="board">Leaderboard</button></a>
+        <p class="board_line">On the basis of recent submissions on different Competitive Platforms. </p>
+    </div>
+
+    {% comment %} {{students}} {% endcomment %} 
+    {% comment %} https://docs.djangoproject.com/en/4.2/ref/templates/builtins/ {% endcomment %}
+
+    {% comment %} <table>
+        <tr>
+          <th>S.No</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Can vote</th> 
+        </tr>
+        {% for student in students%}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.age}}</td>
+          <td>
+            {% if student.age >= 18 %}
+                <p>This student is 18 or older.</p>
+            {% else %}
+                <p>This student is younger than 18.</p>
+            {% endif %}
+        </tr>
+        {% endfor %}
+      </table> {% endcomment %}
+
+    <div class="main_page_sections">
+        <div class="Platform_Section">
+            <h3 class="sec_desc"> Rankers on different Competitive Platforms </h3>
+            <div class="section Platform"> 
+                <div class="your_section_icon Platform_1">
+                    <div class="your_section_icon_heading">
+                        <img class="lib_icon" src="static\Images\Favicon.avif" alt="icon">
+                    </div>
+                    <img class="Platform_img" src="static\Images\Platforms\Codechef.png" alt="">
+                    <p class="Platform_disc ">  </p>
+                </div>
+                <div class="your_section_icon Platform_1">
+                    <div class="your_section_icon_heading">
+                        <img class="lib_icon" src="static\Images\Favicon.avif" alt="icon">
+                    </div>
+                    <img class="Platform_img" src="static\Images\Platforms\Codeforces.png" alt="">
+                    <p class="Platform_disc "> </p>
+                </div>
+                <div class="your_section_icon Platform_1">
+                    <div class="your_section_icon_heading">
+                        <img class="lib_icon" src="static\Images\Favicon.avif" alt="icon">
+                    </div>
+                    <img class="Platform_img" src="static\Images\Platforms\Leetcode.png" alt="">
+                    <p class="Platform_disc "> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="board_div">
+        <p class="board_line">For members - to add their informations </p>
+        <a href="/member_form"><button class="board"> Form </button></a>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<form class="board_div" method="POST" action="/login_page/">
+{% csrf_token %}
+    <h3 style="font-size:2rem ">Fill the following details: </h3>
+    <div class="login_form">
+        <label for="username">UserName:</label>
+        <input type="text" id="username" name="username"><br><br>
+    </div>
+    <div class="login_form">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+    </div>
+    <div class="members_form_submit" style="padding:2rem" >
+        <button type="submit" class="board" >Submit</button>
+    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>If don't have an account</p>
+        <a href="/signup_page">Click here to move to move to signup_form.</a>
+    {% endif %}
+
+</form>
+
+<div class="login_alter">
+    <div class="board_div">
+        <p class="board_line">For login through OTP: </p>
+        <a href="/OtpPage"><button class="board"> Get OTP </button></a>
+    </div>
+    <div class="board_div">
+        <p class="board_line">For changing the current password: </p>
+        <a href="/emailPage"><button class="board"> Form </button></a>
+    </div>
+</div>
+
+{% endblock body %}
