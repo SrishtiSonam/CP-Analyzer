@@ -8,7 +8,78 @@
     </div>
 
     <div class="board_div" id="leaderboard_div">
-        
+      <table border="1">
+        <thead>
+            <tr>
+                <th>Serial No</th>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Problem solved recently on different Platforms</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{ forloop.counter }}</td> <!-- Serial No -->
+                <td>{{ member.rollNo }}</td>
+                <td>{{ member.name }}</td>
+                <td>{{ member.total_problem }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="board_div" id="leaderboard_div">
+      <h3>Codeforces</h3>
+      <table border="1">
+        <thead>
+            <tr>
+                <th>Serial No</th>
+                <th>Username</th>
+                <th>No of problems solved recently</th>
+                <th>Rating</th>
+                <th>Recently solved problems</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{ forloop.counter }}</td> <!-- Serial No -->
+                <td>{{ member.codeforces_user }}</td>
+                <td>{{ member.codeforces_problem }}</td>
+                <td>{{ member.codeforces_rating }}</td>
+                <td><a href="{{ member.codeforces_recent }}">{{ member.codeforces_recent }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="board_div" id="leaderboard_div">
+      <h3>Codechef</h3>
+      <table border="1">
+        <thead>
+            <tr>
+                <th>Serial No</th>
+                <th>Username</th>
+                <th>No of problems solved recently</th>
+                <th>Rating</th>
+                <th>Recently solved problems</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{ forloop.counter }}</td> <!-- Serial No -->
+                <td>{{ member.codechef_user }}</td>
+                <td>{{ member.codechef_problem }}</td>
+                <td>{{ member.codechef_rating }}</td>
+                <td>{{ member. }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
     </div>
 
 {% endblock body %}

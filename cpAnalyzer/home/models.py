@@ -1,4 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
+
 
 # Create your models here.
 class Member(models.Model):
@@ -10,3 +12,9 @@ class Member(models.Model):
     leetcode_user = models.CharField(max_length=50)
     def __str__(self) -> str:
         return self.name
+    
+
+class OTPVerification(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    secret_key = models.CharField(max_length=16)
+    is_verified = models.BooleanField(default=False)

@@ -25,4 +25,6 @@ urlpatterns = [
     path('member_form/', member_form, name="member_form"),
     path('signup_page/', signup_page, name="signup_page"),
     path('leaderboard/', leaderboard, name="leaderboard"),
+    path('send-otp/', send_otp, name='send_otp'),
+    path('verify-otp/', verify_otp, name='verify_otp'),
 ]
