@@ -7,100 +7,100 @@
         <p class="board_line">On the basis of recent submissions on different Competitive Platforms. </p>
     </div>
 
-    <div class="board_div" id="leaderboard_div">
-      <table border="1">
+    <div class="board_div">
+      <table class="styled-table" border="3" >
         <thead>
             <tr>
-                <th>Serial No</th>
-                <th>Roll No</th>
-                <th>Name</th>
-                <th>Problem solved recently on different Platforms</th>
+                <th style="padding: 20px">Serial No</th>
+                <th style="padding: 20px">Roll No</th>
+                <th style="padding: 20px">Name</th>
+                <th style="padding: 20px">Problem solved recently on different Platforms</th>
             </tr>
         </thead>
         <tbody>
             {% for member in members %}
             <tr>
-                <td>{{ forloop.counter }}</td> <!-- Serial No -->
-                <td>{{ member.rollNo }}</td>
-                <td>{{ member.name }}</td>
-                <td>{{ member.total_problem }}</td>
+                <td style="padding: 10px">{{ forloop.counter }}</td> <!-- Serial No -->
+                <td style="padding: 10px">{{ member.rollNo }}</td>
+                <td style="padding: 10px">{{ member.name }}</td>
+                <td style="padding: 10px">{{ member.total_problem }}</td>
             </tr>
             {% endfor %}
         </tbody>
       </table>
     </div>
 
-    <div class="board_div" id="leaderboard_div">
+    <div class="board_div">
       <h3>Codeforces</h3>
-      <table border="1">
+      <table class="styled-table" border="3">
         <thead>
             <tr>
-                <th>Serial No</th>
-                <th>Username</th>
-                <th>No of problems solved recently</th>
-                <th>Rating</th>
-                <th>Recently solved problems</th>
+                <th style="padding: 20px">Serial No</th>
+                <th style="padding: 20px">Username</th>
+                <th style="padding: 20px">No of problems solved recently</th>
+                <th style="padding: 20px">Rating</th>
+                <th style="padding: 20px">Recently solved problems</th>
             </tr>
         </thead>
         <tbody>
             {% for member in members %}
             <tr>
-                <td>{{ forloop.counter }}</td> <!-- Serial No -->
-                <td>{{ member.codeforces_user }}</td>
-                <td>{{ member.codeforces_problem }}</td>
-                <td>{{ member.codeforces_rating }}</td>
-                <td><a href="{{ member.codeforces_recent }}">{{ member.codeforces_recent }}</a></td>
+                <td style="padding: 10px">{{ forloop.counter }}</td> <!-- Serial No -->
+                <td style="padding: 10px">{{ member.codeforces_user }}</td>
+                <td style="padding: 10px">{{ member.codeforces_problem }}</td>
+                <td style="padding: 10px">{{ member.codeforces_rating }}</td>
+                <td style="padding: 10px"><a href="{{ member.codeforces_recent }}">{{ member.codeforces_recent }}</a></td>
             </tr>
             {% endfor %}
         </tbody>
       </table>
     </div>
 
-    <div class="board_div" id="leaderboard_div">
+    <div class="board_div">
       <h3>Codechef</h3>
-      <table border="1">
+      <table class="styled-table" border="3">
         <thead>
             <tr>
-                <th>Serial No</th>
-                <th>Username</th>
-                <th>No of problems solved recently</th>
-                <th>Rating</th>
-                <th>Recently solved problems</th>
+                <th style="padding: 20px">Serial No</th>
+                <th style="padding: 20px">Username</th>
+                <th style="padding: 20px">No of problems solved recently</th>
+                <th style="padding: 20px">Rating</th>
+                <th style="padding: 20px">Recently solved problems</th>
             </tr>
         </thead>
         <tbody>
             {% for member in members %}
             <tr>
-                <td>{{ forloop.counter }}</td> <!-- Serial No -->
-                <td>{{ member.codechef_user }}</td>
-                <td>{{ member.codechef_problem }}</td>
-                <td>{{ member.codechef_rating }}</td>
-                <td><a href="{{ member.codechef_recent }}">{{ member.codechef_recent }}</a></td>
+                <td style="padding: 10px">{{ forloop.counter }}</td> <!-- Serial No -->
+                <td style="padding: 10px">{{ member.codechef_user }}</td>
+                <td style="padding: 10px">{{ member.codechef_problem }}</td>
+                <td style="padding: 10px">{{ member.codechef_rating }}</td>
+                <td style="padding: 10px"><a href="{{ member.codechef_recent }}">{{ member.codechef_recent }}</a></td>
             </tr>
             {% endfor %}
         </tbody>
       </table>
     </div>
 
-    <div class="board_div" id="leaderboard_div">
+    <div class="board_div">
         <h3>Leetcode</h3>
-        <table border="1">
+        <table class="styled-table" border="3">
           <thead>
               <tr>
-                  <th>Serial No</th>
-                  <th>Username</th>
-                  <th>No of problems solved recently</th>
-                  <th>Rating</th>
-                  <th>Recently solved problems</th>
+                  <th style="padding: 20px">Serial No</th>
+                  <th style="padding: 20px">Username</th>
+                  <th style="padding: 20px">No of problems solved recently</th>
+                  <th style="padding: 20px">Rating</th>
+                  <th style="padding: 20px">Recently solved problems</th>
               </tr>
           </thead>
           <tbody>
               {% for member in members %}
               <tr>
-                  <td>{{ forloop.counter }}</td> <!-- Serial No -->
-                  <td>{{ member.leetcode_user }}</td>
-                  <td>{{ member.leetcode_problem }}</td>
-                  <td>{{ member.leetcode_ranking }}</td>
+                  <td style="padding: 10px">{{ forloop.counter }}</td> <!-- Serial No -->
+                  <td style="padding: 10px">{{ member.leetcode_user }}</td>
+                  <td style="padding: 10px">{{ member.leetcode_problem }}</td>
+                  <td style="padding: 10px">{{ member.leetcode_ranking }}</td>
                 <td><a href="{{ member.leetcode_recent }}">{{ member.leetcode_recent }}</a></td>
               </tr>
               {% endfor %}

@@ -52,7 +52,6 @@ def login_page(request):
                 member.leetcode_recent = f"https://leetcode.com/{member.leetcode_user}"
                 member.total_problem = total_problems_solved(member.codeforces_user,member.codechef_user,member.leetcode_user)
             return render(request, "leaderboard.html", context = {'page': "LeaderBorad",'codechef_list':codechef_list,'codeforces_list':codeforces_list,'members': members})
-
                 
     return render(request, "login_page.html", context)
 
@@ -192,24 +191,22 @@ def verify_otp(request):
     return render(request, 'otp_verification.html', {'user': user})
 
 
-def send_page_url_via_email(recipient_email, page_name):
-    subject = 'Here is the URL of the page you requested'
+def send_page_url_via_email(recipient_email, page_name, username):
+    subject = 'Login Request for CPAnalyzer'
     page_url = settings.BASE_URL + reverse(page_name)  
-    message = f'Please find the URL of the page: {page_url}'
+    message = f'Dear {username},\n I hope this email finds you well. We\'re reaching out from CPAnalyzer in response to your request for login credentials via URL.\n As requested, here is the URL to access your account: {page_url}.\n If you encounter any issues or have any questions, please don\'t hesitate to reach out to our support team. We\'re here to assist you!\n Thank you for choosing CPAnalyzer for your needs. We look forward to serving you.\nBest regards,\n CPAnalyzer Support Team'
     from_email = settings.EMAIL_HOST_USER
     recipient_list = [recipient_email]
     send_mail(subject, message, from_email, recipient_list)
 
-
-# def home(request):
-#     # Your view logic for the home page here...
-#     # ...
-
-#     # Assuming the recipient's email is stored in the variable 'recipient_email'
-#     recipient_email = 'recipient@example.com'
-#     send_page_url_via_email(recipient_email, 'home')
-
-#     return render(request, 'home.html')
+def emailPage(request):
+    if request.method == "POST":
+        data = request.POST
+        username = data.get('username')
+        recipient_email = data.get('recipient_email')
+        send_page_url_via_email(recipient_email, 'leaderboard', username)
+        messages.success(request, "Email has been sent on your account, please check your gmail inbox.")
+    return render(request, "emailPage.html", context = {'page': "Login_Email_Page"})
 
 
 
@@ -218,5 +215,31 @@ def leaderboard(request):
     members = Member.objects.all()
     codechef_list = [member.codechef_user for member in members]
     codeforces_list = [member.codeforces_user for member in members]
-    return render(request, "leaderboard.html", context = {'page': "LeaderBorad",'codechef_list':codechef_list,'codeforces_list':codeforces_list,'members': members})
+    leetcode_list = [member.leetcode_user for member in members]
+    for member in members:
+        member.codeforces_problem = codeforces_problems_solved(member.codeforces_user)
+        member.codeforces_rating = codeforces_rating(member.codeforces_user)
+        member.codeforces_recent = f"https://codeforces.com/submissions/{member.codeforces_user}"
+        member.codechef_problem = codechef_problems_solved(member.codechef_user)
+        member.codechef_rating = codechef_rating(member.codechef_user)
+        member.codechef_recent = f"https://www.codechef.com/users/{member.codechef_user}"
+        member.leetcode_problem = leetcode_total_problems_solved(member.leetcode_user)
+        member.leetcode_ranking = leetcode_ranking(member.leetcode_user)
+        member.leetcode_recent = f"https://leetcode.com/{member.leetcode_user}"
+        member.total_problem = total_problems_solved(member.codeforces_user,member.codechef_user,member.leetcode_user)
 
+        # rollNo = member.rollNo
+        # name = member.name
+        # total_problems = member.total_problem
+        # leaderboard.objects.create(
+        #     rollNo=rollNo,
+        #     name=name,
+        #     total_problems=total_problems,
+        # )
+
+    sorted_members = sorted(members, key=lambda x: x['total_problem'], reverse=True)
+    codeforces_sorted_members = sorted(members, key=lambda x: x['codeforces_problem'], reverse=True)
+    codechef_sorted_members = sorted(members, key=lambda x: x['codechef_problem'], reverse=True)
+    leetcode_sorted_members = sorted(members, key=lambda x: x['leetcode_problem'], reverse=True)
+    
+    return render(request, "leaderboard.html", context = {'page': "LeaderBorad",'sorted_members':sorted_members,'codeforces_sorted_members':codeforces_sorted_members, 'codechef_sorted_members':codechef_sorted_members,'leetcode_sorted_members':leetcode_sorted_members})

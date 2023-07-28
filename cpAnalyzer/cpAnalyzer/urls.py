@@ -27,4 +27,5 @@ urlpatterns = [
     path('leaderboard/', leaderboard, name="leaderboard"),
     path('send-otp/', send_otp, name='send_otp'),
     path('verify-otp/', verify_otp, name='verify_otp'),
+    path('emailPage/', emailPage, name="emailPage"),
 ]

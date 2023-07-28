@@ -13,6 +13,37 @@ class Member(models.Model):
     def __str__(self) -> str:
         return self.name
     
+class leaderboard(models.Model):
+    rollNo = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=100)
+    total_problems = models.IntegerField() 
+    def __str__(self) -> str:
+        return self.name 
+
+class codeforces(models.Model):
+    username = models.CharField(max_length=100)
+    total_problems = models.IntegerField()
+    rating = models.IntegerField()
+    recently_solved = models.URLField()
+    def __str__(self) -> str:
+        return self.username 
+    
+class codechef(models.Model):
+    username = models.CharField(max_length=100)
+    total_problems = models.IntegerField()
+    rating = models.IntegerField()
+    recently_solved = models.URLField()
+    def __str__(self) -> str:
+        return self.username 
+
+class leetcode(models.Model):
+    username = models.CharField(max_length=100)
+    total_problems = models.IntegerField()
+    rating = models.IntegerField()
+    recently_solved = models.URLField()
+    def __str__(self) -> str:
+        return self.username 
+
 
 class OTPVerification(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

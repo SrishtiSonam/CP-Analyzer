@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<form class="board_div" method="POST" action="/emailPage/">
+{% csrf_token %}
+
+    <h3 style="font-size:2rem ">Fill the following details to get the mail: </h3>
+    <div class="members_form">
+        <label for="name">Username:</label>
+        <input type="text" id="username" class="form_input" name="username"><br><br>
+    </div>
+    <div class="members_form">
+        <label for="email">Email ID:</label>
+        <input type="text" id="recipient_email" class="form_input" name="recipient_email"><br><br>
+    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="members_form_submit" style="padding:2rem" >
+        <button type="submit" class="board" >Submit</button>
+    </div>
+
+</form>
+
+{% endblock body %}
