@@ -75,11 +75,37 @@
                 <td>{{ member.codechef_user }}</td>
                 <td>{{ member.codechef_problem }}</td>
                 <td>{{ member.codechef_rating }}</td>
-                <td>{{ member. }}</td>
+                <td><a href="{{ member.codechef_recent }}">{{ member.codechef_recent }}</a></td>
             </tr>
             {% endfor %}
         </tbody>
       </table>
     </div>
+
+    <div class="board_div" id="leaderboard_div">
+        <h3>Leetcode</h3>
+        <table border="1">
+          <thead>
+              <tr>
+                  <th>Serial No</th>
+                  <th>Username</th>
+                  <th>No of problems solved recently</th>
+                  <th>Rating</th>
+                  <th>Recently solved problems</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for member in members %}
+              <tr>
+                  <td>{{ forloop.counter }}</td> <!-- Serial No -->
+                  <td>{{ member.leetcode_user }}</td>
+                  <td>{{ member.leetcode_problem }}</td>
+                  <td>{{ member.leetcode_ranking }}</td>
+                <td><a href="{{ member.leetcode_recent }}">{{ member.leetcode_recent }}</a></td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
 
 {% endblock body %}

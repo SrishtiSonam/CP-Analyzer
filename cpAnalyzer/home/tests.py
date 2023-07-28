@@ -1,7 +1,6 @@
 from django.test import TestCase
 import requests
 from datetime import datetime, timedelta
-import requests
 from bs4 import BeautifulSoup
 
 # Create your tests here.
@@ -57,9 +56,28 @@ def codechef_problems_solved(username):
             total = total_problem[-5:-1]
         return total
 
-def total_problems_solved(handle,username):
+
+def leetcode_ranking(userid):
+    req = requests.get(f"https://leetcode.com/{userid}")
+    soup = BeautifulSoup(req.content, "html.parser")
+    ranking_element = soup.find("span", class_="ttext-label-1")
+    if ranking_element:
+        ranking = ranking_element.text.strip()
+        return ranking
+
+def leetcode_total_problems_solved(userid):
+    req = requests.get(f"https://leetcode.com/{userid}")
+    soup = BeautifulSoup(req.content, "html.parser")
+    solved_element = soup.find("div", class_="text-[24px] font-medium text-label-1 dark:text-dark-label-1")
+    if solved_element:
+        problems_solved = solved_element.text.strip()
+        return problems_solved
+
+
+def total_problems_solved(handle,username,userid):
     codeforces=codeforces_problems_solved(handle)
     codechef=codechef_problems_solved(username)
-    total= int(codeforces)+int(codechef)
+    leetcode=leetcode_total_problems_solved(userid)
+    total= int(codeforces)+int(codechef)+int(leetcode)
     return total
 

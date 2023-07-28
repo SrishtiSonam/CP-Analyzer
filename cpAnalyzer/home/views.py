@@ -39,14 +39,18 @@ def login_page(request):
             members = Member.objects.all()
             codechef_list = [member.codechef_user for member in members]
             codeforces_list = [member.codeforces_user for member in members]
+            leetcode_list = [member.leetcode_user for member in members]
             for member in members:
                 member.codeforces_problem = codeforces_problems_solved(member.codeforces_user)
                 member.codeforces_rating = codeforces_rating(member.codeforces_user)
                 member.codeforces_recent = f"https://codeforces.com/submissions/{member.codeforces_user}"
                 member.codechef_problem = codechef_problems_solved(member.codechef_user)
                 member.codechef_rating = codechef_rating(member.codechef_user)
-                # member.codechef_recent = f"https://codeforces.com/submissions/{codechef_user}"
-                member.total_problem = total_problems_solved(member.codeforces_user,member.codechef_user)
+                member.codechef_recent = f"https://www.codechef.com/users/{member.codechef_user}"
+                member.leetcode_problem = leetcode_total_problems_solved(member.leetcode_user)
+                member.leetcode_ranking = leetcode_ranking(member.leetcode_user)
+                member.leetcode_recent = f"https://leetcode.com/{member.leetcode_user}"
+                member.total_problem = total_problems_solved(member.codeforces_user,member.codechef_user,member.leetcode_user)
             return render(request, "leaderboard.html", context = {'page': "LeaderBorad",'codechef_list':codechef_list,'codeforces_list':codeforces_list,'members': members})
 
                 
