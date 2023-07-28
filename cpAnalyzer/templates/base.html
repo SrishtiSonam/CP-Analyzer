@@ -18,14 +18,20 @@
             <img id="Nav_icon" src="{% static '\Images\Favicon.avif' %}" alt="icon">
             <img id="Nav_logo" src="{% static '\Images\Logo.png' %}" alt="logo">
         </div>
-        <div class="search">
-            <div class="magnifing_glass logo">
-                <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i>
+        {% if request.path == 'leaderboard/' %}
+            <button class="board"> Login </button>
+        {% elif request.path == 'login/' %}
+            <button class="board"> Logout </button>
+        {% else %}
+            <div class="search">
+                <div class="magnifing_glass logo">
+                    <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i>
+                </div>
+                <div class="search_bar">
+                    <input id="CP_search" type="text" placeholder="...">
+                </div>
             </div>
-            <div class="search_bar">
-                <input id="CP_search" type="text" placeholder="...">
-            </div>
-        </div>
+        {% endif %}
     </div>
 
     {% block body %}{% endblock body %}
