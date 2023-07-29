@@ -17,9 +17,10 @@ from .tests import *
 # Create your views here.
 
 def home(request):
-    context={'page':"CP_Tracker"}
-    return render(request, "index.html", context)
-
+    first_member_codeforces = "neal : 3019"
+    first_member_codechef = "namanlp : 1847"
+    first_member_leetcode = "sopheary : 721,305"
+    return render(request, "index.html", context={'page':"CP_Tracker",'first_member_codeforces':first_member_codeforces,'first_member_codechef':first_member_codechef,'first_member_leetcode':first_member_leetcode})
 def login_page(request):
     context={'page':"Login_Form"}
     if request.method == "POST":
@@ -158,18 +159,14 @@ def signup_page(request):
 def send_otp(request):
     user = request.user
 
-    # Generate a new secret key and create or update the OTPVerification instance.
     otp_secret_key = random_hex(20)
     otp_verification, _ = OTPVerification.objects.update_or_create(
         user=user, defaults={'secret_key': otp_secret_key}
     )
 
-    # Send the OTP to the user through their preferred method (e.g., SMS, Email).
-    # For demonstration purposes, we'll simply print the OTP here.
     otp = str(random.randint(100000, 999999))
     print(f"Your OTP: {otp}")
 
-    # Save the OTP to the TOTPDevice for verification later.
     TOTPDevice.objects.create(user=user, tolerance=1, secret=otp)
 
     return render(request, 'otp_sent.html', {'user': user})
@@ -179,12 +176,10 @@ def verify_otp(request):
         user = request.user
         otp = request.POST.get('otp')
 
-        # Verify the OTP entered by the user.
         device = TOTPDevice.objects.get(user=user)
         is_verified = device.verify_token(otp)
 
         if is_verified:
-            # Mark OTPVerification as verified.
             OTPVerification.objects.filter(user=user).update(is_verified=True)
             return render(request, 'otp_verified.html', {'user': user})
 

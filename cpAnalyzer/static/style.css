@@ -49,18 +49,39 @@ body{
 
 
 /* ----------     Splash - screen    ------------ */
-#splash-screen {
-    position: fixed;
+.splash_img{
+    height: 55vh; 
+    width: 70vw;
+    margin-left: 15vw;
+}
+.heat_map{
+    height: 25vh; 
+    width: 80vw;  
+    margin-left: 10vw; 
+    position: relative;
+}
+  /* Keyframes for the horizontal movement */
+@keyframes moveHorizontal {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(100% - 50px)); /* Adjust the value to cover the desired distance */
+    }
+}
+  
+  /* Styling for the diagonal line */
+.diagonal_line {
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color:  rgba(56, 56, 56, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index:10; 
+    width: 50px; /* Adjust the width as needed */
+    height: 100%; /* Adjust the height as needed */
+    color: black;
+    transform: translateX(0);
+    opacity: 0.7; /* Adjust the opacity as needed */
   }
+
 
 
 /* ----------     Main_page_sec     ---------- */
@@ -116,12 +137,12 @@ ul.messages {
 }
 
 .Platform .lib_icon{
-    margin-left:8rem;
+    margin-left:10rem;
     z-index: +1;
 }
 .Platform .your_section_icon{
-    height: 10rem;
-    width: 10rem;
+    height: 12rem;
+    width: 12rem;
 }
 .Platform_1{
     background-color: crimson;
@@ -129,7 +150,7 @@ ul.messages {
 .Platform_img{
     margin-top:-1.6rem;
     height:6.5rem;
-    width:9.2rem;
+    width:11.1rem;
     margin-left: 0.4rem;
     border-top-left-radius:25px;
     border-top-right-radius:25px;
@@ -137,7 +158,7 @@ ul.messages {
 .Platform_disc{
     display:flex;
     justify-content: center;
-    margin-top: 0.1rem;
+    color: #FFFFFF;
     font-weight: 700;
 }
 .Platform_Section{
@@ -215,7 +236,12 @@ ul.messages {
     width:12rem;
     border-radius: 1rem;
 }
-
+.link_dis{
+    display:flex;
+    justify-content: center;
+    color: #FFFFFF;
+    font-weight: 700;
+}
 
 
 
