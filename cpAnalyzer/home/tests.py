@@ -75,9 +75,12 @@ def leetcode_total_problems_solved(userid):
 
 
 def total_problems_solved(handle,username,userid):
-    codeforces=codeforces_problems_solved(handle)
-    codechef=codechef_problems_solved(username)
-    leetcode=leetcode_total_problems_solved(userid)
-    total= int(codeforces)+int(codechef)+int(leetcode)
-    return total
+    try:
+        codeforces=codeforces_problems_solved(handle)
+        codechef=codechef_problems_solved(username)
+        leetcode=leetcode_total_problems_solved(userid)
+        total= int(codeforces)+int(codechef)+int(leetcode)
+        return total
+    except:
+        return 0
 
